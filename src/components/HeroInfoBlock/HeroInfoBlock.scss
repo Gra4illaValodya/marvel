@@ -1,0 +1,19 @@
+@import "../../styles/var.scss";
+// @import "mixins";
+
+.HeroInfoBlock {
+  display: flex;
+  padding: 20px;
+  width: 50%;
+  &__image {
+    margin-right: 20px;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  &__title {
+    @include title-style;
+  }
+}
