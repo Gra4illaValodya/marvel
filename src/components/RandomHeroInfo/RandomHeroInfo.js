@@ -4,9 +4,6 @@ import { useEffect, useState } from "react";
 import { AllHeroes, RandomHeroChangeById } from "../../Api/Services";
 
 const RandomHeroInfo = ({ oneHero }) => {
-  if (!oneHero) {
-    return <div> ... Loading</div>;
-  }
   return (
     <div className="RandomHeroInfo">
       <div className="RandomHeroInfo__image-wrapper">

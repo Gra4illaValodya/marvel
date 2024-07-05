@@ -3,18 +3,21 @@ import MarvelServices from "../../Api/MarvelServices";
 import { RandomHeroChangeById } from "../../Api/Services";
 import "./RandomHeroChange.scss";
 
-const RandomHeroChange = ({ setOneHero, id }) => {
+const RandomHeroChange = ({ setOneHero, id, setLoading, setErrorMessage }) => {
   useEffect(() => {
     fetchHeroes();
   }, []);
 
   const fetchHeroes = async () => {
+    setLoading(true);
     try {
       const apiHeroes = MarvelServices();
       const data = await apiHeroes.getOneCharacter(id);
       setOneHero(data[0]);
+      setLoading(false);
     } catch (error) {
-      console.error(`ERROR ERROR ERROR : ${error}`);
+      setErrorMessage(true);
+      setLoading(false);
     }
   };
   const changeRandomHero = () => {
