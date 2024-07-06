@@ -1,5 +1,9 @@
+@import "./styles/var.scss";
 .App {
   padding: 40px;
+  &__hero-list-wrapper {
+    box-shadow: $box-shadow;
+  }
 }
 
 // .App-logo {

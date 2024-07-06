@@ -1,0 +1,15 @@
+.HeroItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px;
+  &__image-wrapper {
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+  &__image {
+    width: 100%;
+    height: 400px;
+  }
+}
