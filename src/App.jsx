@@ -1,24 +1,23 @@
 import "./App.scss";
 import Header from "./components/Header/Header";
-import HeroInfo from "./components/HeroInfo/HeroInfo";
-import { AllHeroes, RandomHeroChange } from "./Api/Services";
-import { useEffect, useState } from "react";
 import Test from "./components/Test/Test";
-import MarvelServices from "./Api/MarvelServices";
-import HeroList from "./components/HeroList/HeroList";
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { MainPage, ComiscPage } from "./components/pages";
 const App = () => {
   return (
-    <div className="App">
-      <Test />
-      <Header />
-      <div className="App__hero-info">
-        <HeroInfo />
-        <div className="App__hero-list-wrapper">
-          <HeroList />
-        </div>
+    <Router>
+      <div className="App">
+        <Test />
+        <Switch>
+          <Route exact path="/">
+            <MainPage />
+          </Route>
+          <Route exact path="/comics">
+            <ComiscPage />
+          </Route>
+        </Switch>
       </div>
-    </div>
+    </Router>
   );
 };
 

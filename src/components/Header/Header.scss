@@ -1,3 +1,4 @@
+@import "../../styles//var.scss";
 .Header {
   display: flex;
   width: 100%;
@@ -7,4 +8,7 @@
   }
   &__logo-item {
   }
+}
+.active {
+  color: $active-link;
 }
