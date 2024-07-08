@@ -10,7 +10,7 @@ import HeroList from "./components/HeroList/HeroList";
 const App = () => {
   return (
     <div className="App">
-      {/* <Test /> */}
+      <Test />
       <Header />
       <div className="App__hero-info">
         <HeroInfo />

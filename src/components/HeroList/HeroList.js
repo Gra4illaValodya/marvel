@@ -1,16 +1,18 @@
 import "./HeroList.scss";
 import HeroItem from "../HeroItem/HeroItem";
 import { useState, useEffect } from "react";
-import MarvelServices from "../../Api/MarvelServices";
+import useMarvelServices from "../../Api/MarvelServices";
 
 const HeroList = () => {
   const [listItemHero, setListItemHero] = useState([]);
   const [loadedNewHero, setLoadedNewHero] = useState(true);
+
   const [offset, setOffset] = useState(210);
-  const marvelServices = MarvelServices();
+  const { loading, errorMessage, getAllCharacters } = useMarvelServices();
 
   useEffect(() => {
-    marvelServices.getAllCharacters(offset).then((data) => {
+    getAllCharacters(offset).then((data) => {
+      console.log("-_____---___--", data);
       setListItemHero(data);
       setLoadedNewHero(false);
     });
@@ -20,7 +22,7 @@ const HeroList = () => {
     setLoadedNewHero(true);
     const newOffset = offset + 9;
 
-    marvelServices.getAllCharacters(newOffset).then((data) => {
+    getAllCharacters(newOffset).then((data) => {
       setListItemHero((prevHero) => [...prevHero, ...data]);
       setLoadedNewHero(false);
     });

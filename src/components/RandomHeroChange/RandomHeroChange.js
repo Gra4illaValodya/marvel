@@ -1,51 +1,36 @@
 import { useEffect } from "react";
-import MarvelServices from "../../Api/MarvelServices";
-import { RandomHeroChangeById } from "../../Api/Services";
+import useMarvelServices from "../../Api/MarvelServices";
 import "./RandomHeroChange.scss";
 
-const RandomHeroChange = ({ setOneHero, id, setLoading, setErrorMessage }) => {
+const RandomHeroChange = ({ setOneHero, id, errorMessage, loading }) => {
+  const { getOneCharacter } = useMarvelServices();
+
   useEffect(() => {
-    fetchHeroes();
+    const fetchInitialHero = async () => {
+      const newHero = await getOneCharacter(id);
+      setOneHero(newHero);
+    };
+    fetchInitialHero();
   }, []);
 
-  const fetchHeroes = async () => {
-    setLoading(true);
-    try {
-      const apiHeroes = MarvelServices();
-      const data = await apiHeroes.getOneCharacter(id);
-      setOneHero(data[0]);
-      setLoading(false);
-    } catch (error) {
-      setErrorMessage(true);
-      setLoading(false);
-    }
+  const fetchHeroById = async (heroId) => {
+    const newHero = await getOneCharacter(heroId);
+    return newHero;
   };
-  const changeRandomHero = () => {
+
+  const changeRandomHero = async () => {
+    console.log("####", loading);
     const getId = () => {
       const min = 1009150;
       const max = 1010400;
       return Math.floor(Math.random() * (max - min + 1) + min);
     };
     const randomID = getId();
-    fetchHeroes(randomID);
+    const newHero = await fetchHeroById(randomID);
+    setOneHero(newHero);
+    console.log("####", loading);
   };
-  // const changeRandomHeroChange = async () => {
-  //   const getId = () => {
-  //     const min = 1009150;
-  //     const max = 1010400;
-  //     const random = Math.floor(Math.random() * (max - min + 1) + min);
-  //     return random;
-  //   };
-  //   const randomID = getId();
-  //   console.log(randomID);
 
-  //   try {
-  //     const data = await RandomHeroChangeById(randomID);
-  //     setRandomHeroChange(data?.data?.results);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
   return (
     <div className="RandomHeroChange">
       <div className="RandomHeroChange__text-block">
@@ -59,4 +44,5 @@ const RandomHeroChange = ({ setOneHero, id, setLoading, setErrorMessage }) => {
     </div>
   );
 };
+
 export default RandomHeroChange;

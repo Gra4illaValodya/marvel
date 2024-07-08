@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { AllHeroes, RandomHeroChangeById } from "../../Api/Services";
 
 const RandomHeroInfo = ({ oneHero }) => {
+  if (!oneHero) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="RandomHeroInfo">
       <div className="RandomHeroInfo__image-wrapper">
-        <img
-          src={`${oneHero.thumbnail.path}.${oneHero.thumbnail.extension}`}
-          className="RandomHeroInfo__image"
-        />
+        <img src={`${oneHero.thumbnail}`} className="RandomHeroInfo__image" />
       </div>
       <div className="RandomHeroInfo__content">
         <div className="RandomHeroInfo__title">{oneHero.name}</div>
