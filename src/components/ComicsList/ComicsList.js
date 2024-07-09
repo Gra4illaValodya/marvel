@@ -27,7 +27,7 @@ const ComicsList = () => {
 
   return (
     <div className="ComicsList">
-      <div className="Comics__wrapper">
+      <div className="ComicsList__wrapper">
         {spinner}
         {error}
         {content}

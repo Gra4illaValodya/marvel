@@ -35,15 +35,10 @@ const HeroList = () => {
           return <HeroItem key={index} el={el} />;
         })}
       </div>
-
       <button className="HeroList__show-more" onClick={getNewHero}>
         {" "}
         SHOW MORE
       </button>
-      <div className="HeroList__q">
-        {" "}
-        {loadedNewHero ? <p>ЗАГРУЗКА</p> : "ЗАГРУЖЕНО"}
-      </div>
     </div>
   );
 };

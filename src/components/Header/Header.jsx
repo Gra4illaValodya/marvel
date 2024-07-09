@@ -20,7 +20,6 @@ const Header = () => {
         </NavLink>{" "}
         /{" "}
         <NavLink
-          end
           style={({ isActive }) => ({
             color: isActive ? "#913002" : "inherit",
           })}

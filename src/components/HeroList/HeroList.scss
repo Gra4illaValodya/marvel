@@ -1,10 +1,15 @@
+@import "../../styles/var.scss";
+
 .HeroList {
+  box-shadow: $box-shadow;
+  padding: 20px;
+  margin-right: 40px;
   &__item {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 16px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 800px;
   }
   &__show-more {
     display: flex;

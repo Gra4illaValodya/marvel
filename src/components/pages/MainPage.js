@@ -1,15 +1,20 @@
 import HeroInfo from "../HeroInfo/HeroInfo";
 import HeroList from "../HeroList/HeroList";
 import Header from "../Header/Header";
+import HeroListItemInfo from "../HeroListItemInfo/HeroListItemInfo";
+
+import "./MainPage.scss";
+
 const MainPage = () => {
   return (
     <>
       {" "}
       <Header />
-      <div className="App__hero-info">
+      <div className="MainPage">
         <HeroInfo />
-        <div className="App__hero-list-wrapper">
+        <div className="MainPage__wrapper">
           <HeroList />
+          <HeroListItemInfo />
         </div>
       </div>
     </>

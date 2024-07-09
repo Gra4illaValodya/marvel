@@ -1,6 +1,7 @@
 $box-shadow: 1px 1px 15px lightgrey;
 $title-size: 24px;
 $active-link: #913002;
+$backgroundItem: #f0f0f0;
 @mixin title-style() {
   font-size: 24px;
   font-weight: 800;

@@ -64,17 +64,15 @@ const useMarvelServices = () => {
       id: comic.id,
       title: comic.title,
       description: comic.description,
-      prices: comic[0].price,
       page: comic.pageCount,
+      prices:
+        comic.prices && Array.isArray(comic.prices)
+          ? comic.prices[0].price
+          : null,
       thumbnail: comic.thumbnail.path + "." + comic.thumbnail.extension,
     };
   };
-  const _transformAllComics = (comic) => {
-    return {
-      title: comic.title,
-      thumbnail: comic.thumbnail.path + "." + comic.thumbnail.extension,
-    };
-  };
+
   return {
     getAllCharacters,
     getAllComics,
