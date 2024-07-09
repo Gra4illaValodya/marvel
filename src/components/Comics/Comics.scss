@@ -1,0 +1,16 @@
+.Comics {
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+    grid-gap: 20px;
+  }
+  &__comic {
+    width: 100%;
+    max-width: 1200px;
+  }
+  &__image img {
+    width: 100%;
+    height: auto;
+  }
+}

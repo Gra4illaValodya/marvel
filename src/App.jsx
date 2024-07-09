@@ -1,21 +1,18 @@
 import "./App.scss";
-import Header from "./components/Header/Header";
+
 import Test from "./components/Test/Test";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { MainPage, ComiscPage } from "./components/pages";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { MainPage, ComiscPage, Page404 } from "./components/pages";
 const App = () => {
   return (
     <Router>
       <div className="App">
         <Test />
-        <Switch>
-          <Route exact path="/">
-            <MainPage />
-          </Route>
-          <Route exact path="/comics">
-            <ComiscPage />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/comics" element={<ComiscPage />} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
       </div>
     </Router>
   );

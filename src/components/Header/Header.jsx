@@ -9,11 +9,23 @@ const Header = () => {
         </span>
       </div>
       <div className="Header__nav">
-        <NavLink exact activeStyle={{ color: "#913002" }} to="/">
+        <NavLink
+          end
+          style={({ isActive }) => ({
+            color: isActive ? "#913002" : "inherit",
+          })}
+          to="/"
+        >
           Characters
         </NavLink>{" "}
         /{" "}
-        <NavLink exact activeStyle={{ color: "#913002" }} to="/comics">
+        <NavLink
+          end
+          style={({ isActive }) => ({
+            color: isActive ? "#913002" : "inherit",
+          })}
+          to="/comics"
+        >
           Comics
         </NavLink>
       </div>
