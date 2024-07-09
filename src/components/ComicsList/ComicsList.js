@@ -1,39 +1,32 @@
-import "./Comics.scss";
+import "./ComicsList.scss";
 import useMarvelServices from "../../Api/MarvelServices";
 import Spinner from "../Spinner/Spinner";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { useEffect, useState } from "react";
+import ComicsItem from "../ComicsItem/ComicsItem";
 
-const Comics = () => {
+const ComicsList = () => {
   const [comics, setComics] = useState([]);
   const { loading, errorMessage, getAllComics } = useMarvelServices();
   useEffect(() => {
     const fetchComic = async () => {
-      const comics = await getAllComics();
-      setComics(comics);
+      const ComicsList = await getAllComics();
+      setComics(ComicsList);
     };
     fetchComic();
   }, []);
   console.log(comics);
+
   const spinner = loading ? <Spinner /> : null;
   const error = errorMessage ? <ErrorMessage /> : null;
   const content = !loading
     ? comics.map((comic, id) => {
-        return (
-          <div className="Comics__comic" key={id}>
-            <div className="Comics__image">
-              <img
-                src={`${comic?.thumbnail?.path}.${comic?.thumbnail?.extension}`}
-              />
-            </div>
-            <div className="Comics__title">{comic.title}</div>
-          </div>
-        );
+        return <ComicsItem comic={comic} id={id} />;
       })
     : null;
 
   return (
-    <div className="Comics">
+    <div className="ComicsList">
       <div className="Comics__wrapper">
         {spinner}
         {error}
@@ -42,4 +35,4 @@ const Comics = () => {
     </div>
   );
 };
-export default Comics;
+export default ComicsList;

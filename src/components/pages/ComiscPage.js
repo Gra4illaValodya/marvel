@@ -1,12 +1,12 @@
-import Comics from "../Comics/Comics";
+import ComicsList from "../ComicsList/ComicsList";
 import Header from "../Header/Header";
 
 const ComiscPage = () => {
   return (
     <>
       <Header />
-      <div className="Comics">
-        <Comics />
+      <div className="ComicsList">
+        <ComicsList />
       </div>
     </>
   );
